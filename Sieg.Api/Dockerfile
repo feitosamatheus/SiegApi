@@ -1,30 +1,41 @@
-# See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
-# This stage is used when running from VS in fast mode (Default for Debug configuration)
-FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
-USER $APP_UID
-WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
-
-
-# This stage is used to build the service project
+# ----------------------------------------------------------------
+# ETAPA 1: BUILD
+# Usa o SDK para compilar e publicar o projeto.
+# ----------------------------------------------------------------
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
-ARG BUILD_CONFIGURATION=Release
-WORKDIR /src
-COPY ["Sieg.Api.csproj", "."]
-RUN dotnet restore "./Sieg.Api.csproj"
-COPY . .
-WORKDIR "/src/."
-RUN dotnet build "./Sieg.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
-
-# This stage is used to publish the service project to be copied to the final stage
-FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./Sieg.Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
-
-# This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
-FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Sieg.Api.dll"]
+
+# 1. Copia o arquivo de solução (.sln) e os arquivos .csproj
+COPY *.sln ./
+COPY ./Sieg.Application/Sieg.Api.Application.csproj ./Sieg.Application/
+COPY ./Sieg.Domain/Sieg.Api.Domain.csproj ./Sieg.Domain/
+COPY ./Sieg.Infrastructure/Sieg.Api.Infrastructure.csproj ./Sieg.Infrastructure/
+COPY ./Sieg.IoC/Sieg.Api.IoC.csproj ./Sieg.IoC/
+COPY ./Sieg.API/Sieg.API.csproj ./Sieg.API/
+
+# 2. Restaura as dependências do projeto principal (API)
+RUN dotnet restore ./Sieg.API/Sieg.API.csproj
+
+# 3. Copia o restante do código-fonte
+COPY . ./
+
+# 4. Publica o projeto da API
+WORKDIR /app/Sieg.API
+RUN dotnet publish -c Release -o /publish /p:UseAppHost=false
+
+
+# ----------------------------------------------------------------
+# ETAPA 2: RUNTIME
+# Usa a imagem base leve do ASP.NET Core.
+# ----------------------------------------------------------------
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
+WORKDIR /app
+
+# Copia os arquivos publicados da etapa de build
+COPY --from=build /publish .
+
+# Expõe a porta padrão da aplicação
+EXPOSE 8080
+
+# Define o ponto de entrada da API
+ENTRYPOINT ["dotnet", "Sieg.API.dll"]
