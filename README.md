@@ -106,7 +106,7 @@ O projeto implementa uma abordagem em pirâmide de testes para garantir a qualida
 ## ? Requisitos e Setup
 
 * .NET SDK 9
-* SQL Server, RabbitMQ e Bucket S3 já provisionados (endpoints acessíveis pela rede da API).
+* **SQL Server**, **RabbitMQ** e **Bucket S3** já provisionados (RDS e Amazon MQ).
 
 ### ?? Configuração de Acesso (Credenciais)
 
