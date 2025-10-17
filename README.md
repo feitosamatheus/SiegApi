@@ -151,3 +151,4 @@ A API será iniciada na porta **5005** (conforme configurado no `launchSettings.
 3.  **Teste de Arquitetura:** Criar testes de arquitetura (*ArchUnit.NET* ou similar) para garantir que as regras da Clean Architecture sejam mantidas.
 4.  **Teste de Carga:** Criar um teste de carga simples (k6 ou NBomber) para validar a performance da Ingestão e das consultas sob pressão.
 5. **Testes Unitários**: Teste unitarios completos do **Application** (lógica dos *Use Cases*).
+6. **Segurança / Security Key:** Garantir que os testes e a aplicação utilizem corretamente a **Security Key** para autenticação e assinatura de tokens, validando cenários de autorização e proteção de endpoints.
