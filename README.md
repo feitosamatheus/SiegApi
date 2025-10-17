@@ -144,7 +144,7 @@ A API será iniciada na porta **5005** (conforme configurado no `launchSettings.
 
 ---
 
-## ?? Possíveis Melhorias (Se Houvesse Mais Tempo)
+## 📌 Possíveis Melhorias (Se Houvesse Mais Tempo)
 
 1.  **Testes de Integração (Fluxo Completo):** Implementar testes de integração (NUnit + WebApplicationFactory) para validar o fluxo completo da API (Controller ? Application ? Infrastructure), utilizando **TestContainers** ou um banco de dados **InMemory** para checar a persistência e o controle de idempotência.
 2.  **Observabilidade Completa:** Implementar *Distributed Tracing* (via OpenTelemetry ou similar) para ter uma visão unificada do fluxo da requisição entre `Sieg.Api`, RabbitMQ e `SiegWorker`.
