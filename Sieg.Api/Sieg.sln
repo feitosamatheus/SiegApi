@@ -10,13 +10,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sieg.Application", "..\Sieg.Application\Sieg.Application.csproj", "{BDBA48D0-5477-45D7-8774-DAC9B07CF6A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sieg.Api.Application", "..\Sieg.Application\Sieg.Api.Application.csproj", "{BDBA48D0-5477-45D7-8774-DAC9B07CF6A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sieg.Infrastructure", "..\Sieg.Infrastructure\Sieg.Infrastructure.csproj", "{ED41850C-76DC-4A73-BA91-6F4470270633}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sieg.Api.Infrastructure", "..\Sieg.Infrastructure\Sieg.Api.Infrastructure.csproj", "{ED41850C-76DC-4A73-BA91-6F4470270633}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sieg.IoC", "..\Sieg.IoC\Sieg.IoC.csproj", "{45FD6BEC-82B6-4751-82E5-7160C6955E1C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sieg.Api.IoC", "..\Sieg.IoC\Sieg.Api.IoC.csproj", "{45FD6BEC-82B6-4751-82E5-7160C6955E1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sieg.Domain", "..\Sieg.Domain\Sieg.Domain.csproj", "{6A2B07B1-F5DA-4172-89A0-F246F1676C3A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sieg.Api.Domain", "..\Sieg.Domain\Sieg.Api.Domain.csproj", "{6A2B07B1-F5DA-4172-89A0-F246F1676C3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
