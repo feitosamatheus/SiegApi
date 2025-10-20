@@ -13,7 +13,7 @@ public class FactoryContext : IDesignTimeDbContextFactory<DatabaseContext>
     public DatabaseContext CreateDbContext(string[] args)
     {
         var optionsBuilder = new DbContextOptionsBuilder<DatabaseContext>();
-        optionsBuilder.UseSqlServer("Server=sieg-database-desafio.cjywwqakqxcw.us-east-2.rds.amazonaws.com,1433;Database=SiegDB;User Id=admin;Password=74107410;TrustServerCertificate=True;");
+        optionsBuilder.UseSqlServer("Server=sieg-database-desafio.c5oywoc60bg4.us-east-2.rds.amazonaws.com,1433;Database=SiegDB;User Id=admin;Password=74107410;TrustServerCertificate=True;");
 
         return new DatabaseContext(optionsBuilder.Options);
     }

@@ -31,9 +31,9 @@ public static class IoCConfiguration
 
         services.AddMassTransit(x =>
         {
-            var rabbitHost = configuration["RabbitMQ:Host"] ?? "b-ef391786-dc48-4b6f-b582-474e5f32078d.mq.us-east-2.on.aws";
+            var rabbitHost = configuration["RabbitMQ:Host"] ?? "b-2e244e53-f0ed-463a-a217-7bca0f99c319.mq.us-east-2.on.aws";
             var rabbitPort = int.Parse(configuration["RabbitMQ:Port"] ?? "5671");
-            var rabbitUser = configuration["RabbitMQ:Username"] ?? "sieg-database-desafio";
+            var rabbitUser = configuration["RabbitMQ:Username"] ?? "sieg-broker-desafio";
             var rabbitPass = configuration["RabbitMQ:Password"] ?? "SiegDesafio123!";
 
             x.UsingRabbitMq((ctx, cfg) =>
